@@ -25,7 +25,6 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = params;
 
   const data = await getSinglePost(slug);
-  console.log(data);
 
   return (
     <div className="w-full min-h-[calc(100vh-3.5rem)] mt-12 py-10">
