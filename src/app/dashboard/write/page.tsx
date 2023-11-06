@@ -40,15 +40,11 @@ const CreatePost = () => {
   if (status === "unauthenticated") {
     router.push("/login");
   }
-  const { data } = useSWRImmutable(
-    "http://localhost:3000/api/category",
-    fetcher,
-    {
-      revalidateIfStale: false,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
-  );
+  const { data } = useSWRImmutable(`/api/category`, fetcher, {
+    revalidateIfStale: false,
+    revalidateOnFocus: false,
+    revalidateOnReconnect: false,
+  });
 
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("");
