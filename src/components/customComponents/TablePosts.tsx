@@ -22,7 +22,10 @@ const fetcher = async (url: string) => {
 
 const TablePosts = () => {
   const [userPosts, setUserPosts] = useState([]);
-  const { data } = useSWR("http://localhost:3000/api/user", fetcher);
+  const { data } = useSWR(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/user`,
+    fetcher
+  );
 
   useEffect(() => {
     if (data) {

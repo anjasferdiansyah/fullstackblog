@@ -4,9 +4,12 @@ import { Badge } from "../ui/badge";
 import EditorsPickCard from "./EditorsPickCard";
 
 const getEditorsPick = async () => {
-  const res = await fetch("http://localhost:3000/api/editorsPick", {
-    cache: "no-store",
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/editorsPick`,
+    {
+      cache: "no-store",
+    }
+  );
   const data = await res.json();
   return data;
 };

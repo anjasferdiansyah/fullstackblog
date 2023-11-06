@@ -7,7 +7,7 @@ interface Category {
 }
 
 const getCategories = async () => {
-  const res = await fetch("http://localhost:3000/api/category", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`, {
     cache: "no-store",
   });
   if (!res.ok) {
