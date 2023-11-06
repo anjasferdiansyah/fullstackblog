@@ -11,7 +11,6 @@ import { Button } from "@/components/ui/button";
 import React, { useEffect } from "react";
 import { Plus, FileImage, Upload, Video, XCircle } from "lucide-react";
 import { useState } from "react";
-import ReactQuill from "react-quill";
 import {
   getStorage,
   ref,
@@ -24,6 +23,7 @@ import useSWRImmutable from "swr/immutable";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
+import dynamic from "next/dynamic";
 
 // ...
 
@@ -36,6 +36,10 @@ const fetcher = async (url: any) => {
 const CreatePost = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
+
+  const ReactQuill = dynamic(() => import("react-quill"), {
+    ssr: false,
+  });
 
   if (status === "unauthenticated") {
     router.push("/login");
@@ -52,12 +56,6 @@ const CreatePost = () => {
   const [media, setMedia] = useState("");
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
-
-  console.log("category :" + category);
-  console.log("file :" + file);
-  console.log("media :" + media);
-  console.log("title :" + title);
-  console.log("value :" + value);
 
   useEffect(() => {
     const upload = () => {
