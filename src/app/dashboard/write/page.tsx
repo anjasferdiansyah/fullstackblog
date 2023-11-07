@@ -17,13 +17,14 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import "react-quill/dist/quill.bubble.css";
+import "react-quill/dist/quill.snow.css";
 import { app } from "@/lib/firebase";
 import useSWRImmutable from "swr/immutable";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "@/components/ui/use-toast";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 // ...
 
@@ -33,13 +34,22 @@ const fetcher = async (url: any) => {
   return fetch(url).then((res) => res.json());
 };
 
+const ReactQuill = dynamic(() => import("react-quill"), {
+  ssr: false,
+});
+
+// eslint-disable-next-line react/display-name
+const MemoizedReactQuill = React.memo(({ value, onChange }: any) => (
+  <ReactQuill theme="snow" value={value} onChange={onChange} />
+));
+
 const CreatePost = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  const ReactQuill = dynamic(() => import("react-quill"), {
-    ssr: false,
-  });
+  const handleEditorChange = (content: string) => {
+    setValue(content);
+  };
 
   if (status === "unauthenticated") {
     router.push("/login");
@@ -129,6 +139,8 @@ const CreatePost = () => {
     }
   };
 
+  // eslint-disable-next-line react/display-name
+
   return (
     <div className="w-full mt-12 py-10">
       <div className="container md:max-w-5xl mx-auto">
@@ -201,12 +213,16 @@ const CreatePost = () => {
             </>
           )}
         </div>
-        <ReactQuill
-          theme="bubble"
-          value={value}
-          onChange={setValue}
-          placeholder="Tell your story"
-        />
+        <div className={`w-1/2 ${media ? "block" : "hidden"}`}>
+          <Image
+            src={media ? media : ""}
+            alt=""
+            width={1400}
+            height={900}
+            className="w-full object-cover"
+          />
+        </div>
+        <MemoizedReactQuill value={value} onChange={handleEditorChange} />
         <Button
           size={"sm"}
           className="rounded-full fixed top-2 z-30 right-20"
