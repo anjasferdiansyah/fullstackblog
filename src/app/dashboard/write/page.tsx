@@ -129,33 +129,6 @@ const CreatePost = () => {
     }
   };
 
-  const modules = {
-    toolbar: [
-      [{ header: [1, 2, false] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [
-        { list: "ordered" },
-        { list: "bullet" },
-        { indent: "-1" },
-        { indent: "+1" },
-      ],
-      ["clean"],
-    ],
-  };
-
-  const formats = [
-    "header",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "indent",
-    "link",
-  ];
-
   return (
     <div className="w-full mt-12 py-10">
       <div className="container md:max-w-5xl mx-auto">
@@ -233,8 +206,6 @@ const CreatePost = () => {
           value={value}
           onChange={setValue}
           placeholder="Tell your story"
-          modules={modules}
-          formats={formats}
         />
         <Button
           size={"sm"}
