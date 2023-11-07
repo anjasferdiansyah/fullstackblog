@@ -24,7 +24,7 @@ const PopularCard = ({
         {category}
       </Link>
       <div className="">
-        <p className="text-sm">{desc}</p>
+        <div dangerouslySetInnerHTML={{ __html: desc }}></div>
         <div className="text-sm text-accent-foreground font-bold">
           <Link href={`/posts/${slug}}`}>{userName}</Link>
           <span className="text-muted-foreground font-medium">{createdAt}</span>

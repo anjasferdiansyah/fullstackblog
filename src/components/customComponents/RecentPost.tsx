@@ -32,7 +32,7 @@ const RecentPost = async ({ page, cat }: any) => {
           <RecentPostCard
             key={post.id}
             image={post.img}
-            description={post.desc}
+            description={post.desc.substring(0, 100).concat("...")}
             title={post.title}
             user={post.userEmail}
             category={post.catSlug}

@@ -22,7 +22,7 @@ const SinglePage = ({ params }: { params: { slug: string } }) => {
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
   const { data, isLoading } = useSWR(
-    `http://localhost:3000/api/posts/${slug}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/posts/${slug}`,
     fetcher,
     {
       refreshInterval: 0,
@@ -30,7 +30,7 @@ const SinglePage = ({ params }: { params: { slug: string } }) => {
   );
 
   const handleDelete = async (slug: any) => {
-    const res = await fetch(`http://localhost:3000/api/posts/`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/`, {
       method: "delete",
       headers: {
         "Content-Type": "application/json",

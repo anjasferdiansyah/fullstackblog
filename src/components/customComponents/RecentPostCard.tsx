@@ -44,7 +44,7 @@ const RecentPostCard = ({
           />
         ) : (
           <Image
-            src="https://source.unsplash.com/1400x900?lifestyle"
+            src={`https://source.unsplash.com/1400x900?${category}`}
             alt={title}
             width={1400}
             height={900}

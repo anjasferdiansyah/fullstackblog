@@ -75,7 +75,7 @@ export const DELETE = async (req: NextRequest) => {
 
     const post = await prisma.post.delete({
       where: {
-        slug: slug,
+        slug,
       },
     });
 
