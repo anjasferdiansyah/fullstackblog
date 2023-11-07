@@ -20,21 +20,11 @@ const fetcher = async (url: string) => {
   return data;
 };
 
-const createComment = async (desc: string) => {
-  const res = await fetch("http://localhost:3000/api/comments", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ desc }),
-  });
-};
-
 const Comment = ({ postSlug }: { postSlug: string }) => {
   const [desc, setDesc] = React.useState("");
   const { status } = useSession();
   const { data, mutate, isLoading } = useSWR(
-    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/comments?postSlug=${postSlug}`,
     fetcher
   );
 
