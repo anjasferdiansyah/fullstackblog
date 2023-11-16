@@ -1,9 +1,10 @@
 import RecentPost from "@/components/customComponents/RecentPost";
 import React from "react";
 
-const BlogPage = ({ searchParams }: any) => {
+const BlogPage = ({ searchParams, params }: any) => {
   const page = parseInt(searchParams.page) || 1;
-  const { cat } = searchParams;
+
+  const cat = params.catSlug;
 
   return (
     <div className="w-full min-h-[calc(100vh-3.5rem)] mt-12 py-10">

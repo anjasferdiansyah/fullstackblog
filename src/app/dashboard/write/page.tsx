@@ -17,7 +17,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
-import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
 import { app } from "@/lib/firebase";
 import useSWRImmutable from "swr/immutable";
 import { useSession } from "next-auth/react";
@@ -40,7 +40,7 @@ const ReactQuill = dynamic(() => import("react-quill"), {
 
 // eslint-disable-next-line react/display-name
 const MemoizedReactQuill = React.memo(({ value, onChange }: any) => (
-  <ReactQuill theme="snow" value={value} onChange={onChange} />
+  <ReactQuill theme="bubble" value={value} onChange={onChange} />
 ));
 
 const CreatePost = () => {
@@ -214,13 +214,15 @@ const CreatePost = () => {
           )}
         </div>
         <div className={`w-1/2 ${media ? "block" : "hidden"}`}>
-          <Image
-            src={media ? media : ""}
-            alt=""
-            width={1400}
-            height={900}
-            className="w-full object-cover"
-          />
+          {media && (
+            <Image
+              src={media ? media : ""}
+              alt=""
+              width={1400}
+              height={900}
+              className="w-full object-cover"
+            />
+          )}
         </div>
         <MemoizedReactQuill value={value} onChange={handleEditorChange} />
         <Button

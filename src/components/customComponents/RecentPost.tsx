@@ -34,7 +34,7 @@ const RecentPost = async ({ page, cat }: any) => {
             image={post.img}
             description={post.desc.substring(0, 100).concat("...")}
             title={post.title}
-            user={post.userEmail}
+            user={post.user.name}
             category={post.catSlug}
             date={post.createdAt.substring(0, 10)}
             slug={post.slug}

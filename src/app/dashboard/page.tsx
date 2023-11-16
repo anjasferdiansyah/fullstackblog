@@ -39,7 +39,7 @@ const Dashboard = async () => {
   const post = await getUserPost();
   return (
     <div className="mt-14 w-full h-[calc(100vh-9rem)] flex">
-      <div className="w-[20%] bg-slate-100 fixed">
+      <div className="w-[20%] bg-slate-100 dark:bg-slate-600 fixed">
         <div className="container h-[calc(100vh-9rem)]">
           <h1 className="text-2xl py-4 font-bold">Tinker Blog</h1>
           <div className="flex flex-col">

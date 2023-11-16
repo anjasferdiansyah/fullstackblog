@@ -17,16 +17,19 @@ const PopularCategoryCard = ({
   };
 
   return (
-    <div
-      className={`w-full h-12 ${randomColor()} rounded flex justify-center items-center gap-1`}
-    >
-      <Avatar className="w-8 h-8">
-        <AvatarImage src={image} />
-        <AvatarFallback>AF</AvatarFallback>
-      </Avatar>
-      <div className="text-sm text-center font-bold leading-none">
-        <Link href={categoryLink}>{categoriesTitle}</Link>
-      </div>
+    <div>
+      <Link
+        href={categoryLink}
+        className={`w-full h-12 ${randomColor()} rounded flex justify-center items-center gap-1`}
+      >
+        <Avatar className="w-8 h-8">
+          <AvatarImage src={image} />
+          <AvatarFallback>AF</AvatarFallback>
+        </Avatar>
+        <div className="text-sm text-center font-bold leading-none">
+          <div>{categoriesTitle}</div>
+        </div>
+      </Link>
     </div>
   );
 };

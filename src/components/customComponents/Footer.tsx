@@ -4,14 +4,10 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="w-full relative py-8 flex items-center justify-between border-t-2 bg-white border-stone-200/60">
+    <div className="w-full relative py-8 flex items-center justify-between border-t-2 bg-white dark:bg-slate-900 border-stone-200/60">
       <div className="container max-w-5xl w-full flex flex-wrap gap-y-4 gap-x-40 justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-2">
-            <Avatar className="border-2">
-              <AvatarImage src="https://github.com/anjasferdiansyah.png" />
-              <AvatarFallback>AF</AvatarFallback>
-            </Avatar>
             <h1 className="text-2xl font-bold">AnjasDev_</h1>
           </div>
           <p className="text-sm leading-2">

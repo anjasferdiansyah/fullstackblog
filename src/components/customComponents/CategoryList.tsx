@@ -1,9 +1,11 @@
+import Link from "next/link";
 import React from "react";
 
 interface Category {
   id: string;
   title: string;
   img?: string;
+  slug: string;
 }
 
 const getCategories = async () => {
@@ -34,12 +36,13 @@ const CategoryList = async () => {
       <div className="w-full py-4 flex flex-wrap gap-2">
         {categories &&
           categories.map((category: Category) => (
-            <div
+            <Link
+              href={`/category/${category.slug}`}
               key={category.id}
               className={`py-2 px-4 w-full md:w-auto rounded ${randomColor()} font-bold text-white`}
             >
               {category.title}
-            </div>
+            </Link>
           ))}
       </div>
     </div>

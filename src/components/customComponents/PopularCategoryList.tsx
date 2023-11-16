@@ -31,7 +31,7 @@ const PopularCategoryList = async () => {
         {categories &&
           categories.map((category: Category) => (
             <PopularCategoryCard
-              categoryLink={`/category?cat=${category.slug}`}
+              categoryLink={`/category/${category.slug}`}
               key={category.id}
               categoriesTitle={category.title}
               image={category.img}

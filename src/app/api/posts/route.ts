@@ -19,6 +19,9 @@ export const GET = async (req: Request) => {
     orderBy: {
       createdAt: "desc",
     },
+    include: {
+      user: true,
+    },
   };
 
   try {

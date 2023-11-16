@@ -23,7 +23,6 @@ import { User } from "@prisma/client";
 
 const NavMenu = () => {
   const { data, status }: { data: any; status: any } = useSession();
-  console.log(data, status);
 
   return (
     <NavigationMenu className="">
@@ -59,9 +58,6 @@ const NavMenu = () => {
                     </Avatar>
                     <div className="text-sm text-center font-bold leading-none">
                       <div className="w-full text-sm">{data?.user?.name}</div>
-                      <div className="text-sm text-muted-foreground w-full">
-                        {data?.user?.username || data?.user?.email}
-                      </div>
                     </div>
                     <Button
                       onClick={() => {
