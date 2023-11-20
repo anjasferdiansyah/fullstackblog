@@ -11,10 +11,10 @@ const Footer = () => {
             <h1 className="text-2xl font-bold">AnjasDev_</h1>
           </div>
           <p className="text-sm leading-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-            voluptates accusamus reprehenderit iste
+            Seorang frontend developer yang bersemangat dalam membangun web yang
+            bermanfaat dan menarik
           </p>
-          <small className="text-sm mt-2">Made with ❤ Copyright © 2023</small>
+          <small className="text-sm mt-2">Made with 🧡 Copyright © 2023</small>
         </div>
         <div className="flex flex-1 w-full self-center">
           <div id="links" className="w-full">
@@ -42,23 +42,6 @@ const Footer = () => {
               </li>
               <li>
                 <Link href="#">Instagram</Link>
-              </li>
-            </ul>
-          </div>
-          <div id="tags" className="w-full">
-            <h1 className="font-semibold">Tags</h1>
-            <ul className="text-sm text-muted-foreground py-2">
-              <li>
-                <Link href="#">Lifestyle</Link>
-              </li>
-              <li>
-                <Link href="#">Travel</Link>
-              </li>
-              <li>
-                <Link href="#">Programming</Link>
-              </li>
-              <li>
-                <Link href="#">Photography</Link>
               </li>
             </ul>
           </div>

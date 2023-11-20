@@ -37,26 +37,7 @@ const Dashboard = async () => {
   }
 
   const post = await getUserPost();
-  return (
-    <div className="mt-14 w-full h-[calc(100vh-9rem)] flex">
-      <div className="w-[20%] bg-slate-100 dark:bg-slate-600 fixed">
-        <div className="container h-[calc(100vh-9rem)]">
-          <h1 className="text-2xl py-4 font-bold">Tinker Blog</h1>
-          <div className="flex flex-col">
-            <Link href={"/"}>Home</Link>
-            <Link href={"/dashboard/profile"}>Profile</Link>
-            <Link href={"/dashboard/write"}>Create Post</Link>
-          </div>
-        </div>
-      </div>
-      <div className="w-[80%] ml-auto pl-10 overflow-scroll">
-        <h1 className="text-2xl font-bold py-4 pl-2 tracking-tight">
-          Posts List
-        </h1>
-        <TablePosts />
-      </div>
-    </div>
-  );
+  return <TablePosts />;
 };
 
 export default Dashboard;

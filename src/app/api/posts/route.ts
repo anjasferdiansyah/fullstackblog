@@ -89,3 +89,35 @@ export const DELETE = async (req: NextRequest) => {
     });
   }
 };
+
+export const PUT = async (req: NextRequest) => {
+  const session: any = await getAuthSession();
+  if (!session) {
+    return new NextResponse(JSON.stringify({ message: "Unauthorized" }), {
+      status: 401,
+    });
+  }
+
+  try {
+    const { oldSlug, slug, title, desc, img } = await req.json();
+    console.log(slug, title, desc, img);
+
+    const update = await prisma.post.update({
+      where: {
+        slug: oldSlug,
+      },
+      data: {
+        slug: slug,
+        title: title,
+        desc: desc,
+        img: img,
+      },
+    });
+
+    return NextResponse.json({ update, message: "Success" }, { status: 200 });
+  } catch (error) {
+    return new NextResponse(JSON.stringify(error), {
+      status: 500,
+    });
+  }
+};

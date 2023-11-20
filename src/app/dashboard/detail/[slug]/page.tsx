@@ -6,7 +6,7 @@ import EditorsPick from "@/components/customComponents/EditorsPick";
 import PopularList from "@/components/customComponents/PopularList";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { toast } from "@/components/ui/use-toast";
 import Image from "next/image";
 import Link from "next/link";
@@ -62,40 +62,51 @@ const SinglePage = ({ params }: { params: { slug: string } }) => {
             <Image
               width={900}
               height={900}
-              src="https://source.unsplash.com/1400x900?lifestyle"
+              src={data ? data.img : "/default.jpg"}
               alt=""
               className="w-1/2 object-cover"
             />
           </div>
-          <div>
-            <Badge variant={"outline"}> {data?.cat.title} </Badge>
-            <h1 className="text-5xl tracking-tight leading-snug font-bold">
-              {data?.title}
-            </h1>
-          </div>
-          <div className="flex items-center gap-2">
-            <Avatar className="border-2 border-stone-200/60">
-              <AvatarImage src={data?.user.image || "/default.jpg"} />
-              <AvatarFallback>AF</AvatarFallback>
-            </Avatar>
-            <div className="leading-tight">
-              <h4 className=" text-primary">{data?.user.name}</h4>
-              <p>{data?.createdAt.substring(0, 10)}</p>
+        </div>
+      </div>
+      {isLoading && <div>Loading...</div>}
+      {!isLoading && (
+        <div className="container md:max-w-5xl grid gap-10 mx-auto py-10">
+          <div className="w-full py-10 ">
+            <div>
+              <Badge variant={"outline"}> {data?.cat.title} </Badge>
+              <h1 className="text-5xl tracking-tight leading-snug font-bold">
+                {data?.title}
+              </h1>
+            </div>
+            <div className="flex items-center gap-2">
+              <Avatar className="border-2 border-stone-200/60">
+                <AvatarImage src={data?.user.image || "/default.jpg"} />
+                <AvatarFallback>AF</AvatarFallback>
+              </Avatar>
+              <div className="leading-tight">
+                <h4 className=" text-primary">{data?.user.name}</h4>
+                <p>{data?.createdAt.substring(0, 10)}</p>
+              </div>
+            </div>
+            <div
+              className="py-10"
+              dangerouslySetInnerHTML={{ __html: data?.desc }}
+            />
+            <div>
+              <div className="flex gap-4">
+                <AlertDialogDelete onClick={() => handleDelete(slug)} />
+                <Link
+                  className={buttonVariants({ variant: "outline" })}
+                  href={`/dashboard/edit/${data?.slug}`}
+                >
+                  Edit
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="container md:max-w-5xl grid gap-10 mx-auto py-10">
-        <div className="w-full py-10 ">
-          <div
-            className="pb-10"
-            dangerouslySetInnerHTML={{ __html: data?.desc }}
-          />
-          <div>
-            <AlertDialogDelete onClick={() => handleDelete(slug)} />
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

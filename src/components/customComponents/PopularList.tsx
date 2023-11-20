@@ -29,7 +29,7 @@ const PopularList = async () => {
               slug={post.slug}
               key={post.id}
               category={post.catSlug}
-              desc={post.desc.substring(0, 30)}
+              desc={post.title}
               userName={post.userName}
               createdAt={post.createdAt.substring(0, 10)}
             />

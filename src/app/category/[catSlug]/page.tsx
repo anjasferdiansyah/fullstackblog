@@ -9,7 +9,9 @@ const BlogPage = ({ searchParams, params }: any) => {
   return (
     <div className="w-full min-h-[calc(100vh-3.5rem)] mt-12 py-10">
       <div className="container md:max-w-5xl mx-auto">
-        <div>{cat} Blog</div>
+        <div className="w-full py-5 px-3 text-center leading-tight font-bold text-4xl">
+          {cat} Blog
+        </div>
         <RecentPost page={page} cat={cat} />
       </div>
     </div>
