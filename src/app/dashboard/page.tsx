@@ -20,23 +20,12 @@ import { Button } from "@/components/ui/button";
 import { AlertDialogDelete } from "@/components/customComponents/AlertDialogDelete";
 import TablePosts from "@/components/customComponents/TablePosts";
 
-const getUserPost = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  return res.json();
-};
-
 const Dashboard = async () => {
   const session: any = await getServerSession(authOptions);
   if (!session) {
     redirect("/login");
   }
 
-  const post = await getUserPost();
   return <TablePosts />;
 };
 

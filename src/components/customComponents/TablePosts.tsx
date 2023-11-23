@@ -34,7 +34,7 @@ const TablePosts = () => {
   }, [data, userPosts]);
 
   return (
-    <Table className="max-w-4xl">
+    <Table className="max-w-5xl w-full mx-auto">
       <TableCaption>
         {userPosts.length === 0 ? "No posts yet." : "A list of your posts."}
       </TableCaption>

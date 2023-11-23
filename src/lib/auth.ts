@@ -42,6 +42,10 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
+        if (existingUsername.password === null) {
+          return null;
+        }
+
         if (existingUsername.password) {
           const passwordMatch = await compare(
             credentials.password,
@@ -58,6 +62,7 @@ export const authOptions: NextAuthOptions = {
           name: existingUsername.name,
           username: existingUsername.username,
           email: existingUsername.email,
+          image: existingUsername.image,
         };
       },
     }),
@@ -75,7 +80,6 @@ export const authOptions: NextAuthOptions = {
     },
 
     async session({ session, token }: any) {
-      session.id = token.id;
       return {
         ...session,
         user: {
