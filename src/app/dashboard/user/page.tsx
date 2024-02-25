@@ -73,7 +73,7 @@ const ProfilePage = () => {
     };
 
     file && upload();
-  }, [file]);
+  }, [file, storage]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
