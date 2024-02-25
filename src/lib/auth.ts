@@ -68,7 +68,11 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async jwt({ token, user }: any) {
+    async jwt({ token, user, session, trigger }: any) {
+      if (trigger === "update") {
+        return { ...token, ...session.user };
+      }
+
       if (user) {
         token.id = user.id;
         token.username = user.username;

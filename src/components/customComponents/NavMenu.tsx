@@ -50,6 +50,7 @@ const NavMenu = () => {
                   <NavigationMenuLink className="flex flex-col gap-4 items-center justify-center">
                     <Avatar className="w-16 h-16 md:w-16 md:h-16 mt-4 mx-auto">
                       <AvatarImage
+                        className="object-cover"
                         src={
                           data?.user?.image ? data?.user?.image : "default.jpg"
                         }

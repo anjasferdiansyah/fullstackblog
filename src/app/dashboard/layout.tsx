@@ -22,7 +22,6 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
     redirect("/login");
   }
 
-  const post = await getUserPost();
   return (
     <div className="mt-14 w-full h-[calc(100vh-9rem)] flex">
       <div className="w-[20%] bg-slate-100 dark:bg-slate-600 fixed">
@@ -48,7 +47,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
             <Separator />
             <Link
               className="px-4 py-2 rounded transition-all hover:bg-background hover:transition-all hover:duration-300"
-              href={`/dashboard/user/${session?.user?.id}`}
+              href={`/dashboard/user`}
             >
               Profile
             </Link>

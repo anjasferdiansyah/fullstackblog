@@ -105,3 +105,27 @@ export const GET = async (req: Request) => {
     status: 200,
   });
 };
+
+export const PUT = async (req: Request) => {
+  const session: any = await getServerSession(authOptions);
+  if (!session) {
+    return new NextResponse(JSON.stringify({ user: null }), {
+      status: 401,
+    });
+  }
+
+  const { image } = await req.json();
+  console.log(image);
+  const user = await prisma.user.update({
+    where: {
+      email: session.user.email,
+    },
+    data: {
+      image,
+    },
+  });
+
+  return new NextResponse(JSON.stringify({ user }), {
+    status: 200,
+  });
+};
